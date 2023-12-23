@@ -2,66 +2,72 @@ package de.vivienseligerlaraspadin.lernquiz.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
-import java.awt.Insets;
-import javax.swing.JButton;
+import java.awt.event.ActionListener;
 
 public class Hauptmenue implements ActionListener {
 
-	
-	JFrame frame = new JFrame() ;
-	JButton myButton = new JButton("Karteikarte erstellen");
-	
-	Hauptmenue (){
-	GridBagLayout gridBagLayout = new GridBagLayout();
-	gridBagLayout.columnWidths = new int[]{100, 200, 0};
-	gridBagLayout.rowHeights = new int[]{65, 40, 0, 0};
-	gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-	gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-	frame.getContentPane().setLayout(gridBagLayout);
-	myButton.setFocusable(false); 
-	myButton.addActionListener(this);
-	
-	GridBagConstraints gbc_myButton = new GridBagConstraints();
-	gbc_myButton.insets = new Insets(0, 0, 5, 0);
-	gbc_myButton.fill = GridBagConstraints.BOTH;
-	gbc_myButton.gridx = 1;
-	gbc_myButton.gridy = 0;
-	frame.getContentPane().add(myButton, gbc_myButton);
-	
-	JButton btnNewButton = new JButton("Karteikarte ansehen");
-	GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-	gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
-	gbc_btnNewButton.gridx = 1;
-	gbc_btnNewButton.gridy = 1;
-	frame.getContentPane().add(btnNewButton, gbc_btnNewButton);
-	
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(420, 420);
-	frame.setVisible(true);
-	}
-	
-	
+    JFrame frame = new JFrame("Willkommen bei deiner Karteikarten Lernapp");
+    JButton btnKarteikartenEinsehen = new JButton("Karteikarten einsehen");
+    JButton btnKategorien = new JButton("Kategorien");
+    JButton btnKarteikartenLernen = new JButton("Karteikarten lernen/abfragen");
+    
+    Hauptmenue (){
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(420, 420);
+        frame.setLayout(new GridBagLayout());
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        
+        JLabel lblTitle = new JLabel("Willkommen bei deiner Karteikarten Lernapp");
+        gbc.insets = new Insets(10, 0, 20, 0);
+        frame.add(lblTitle, gbc);
+        
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbcButtons = new GridBagConstraints();
+        gbcButtons.fill = GridBagConstraints.HORIZONTAL;
+        gbcButtons.insets = new Insets(5, 5, 5, 5);
+        
+        gbcButtons.gridx = 0;
+        gbcButtons.gridy = 0;
+        buttonPanel.add(btnKarteikartenEinsehen, gbcButtons);
+        
+        gbcButtons.gridx = 1;
+        gbcButtons.gridy = 0;
+        buttonPanel.add(btnKategorien, gbcButtons);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        frame.add(buttonPanel, gbc);
+        
+        gbc.gridy = 2;
+        gbc.insets = new Insets(10, 0, 0, 0);
+        frame.add(btnKarteikartenLernen, gbc);
+        
+        btnKarteikartenEinsehen.addActionListener(this);
+        
+        frame.setVisible(true);
+    }
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource()==myButton) {
+		if (e.getSource() == btnKarteikartenEinsehen) {
 			frame.dispose();
-			new KarteiErstellen();
+			new KarteiEinsehen();
 		}
-		
-		
 	}
-
-	
-		
-	
-
 }
+
