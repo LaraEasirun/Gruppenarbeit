@@ -8,6 +8,8 @@ package de.vivienseligerlaraspadin.lernquiz.gui;
 	import javax.swing.JButton;
 	import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import java.awt.Color;
 
 	public class KarteiErstellen {
 
@@ -20,6 +22,7 @@ package de.vivienseligerlaraspadin.lernquiz.gui;
 	    public KarteiErstellen() {
 	        frame = new JFrame("Karteikarte erstellen");
 	        JPanel panel = new JPanel();
+	        panel.setBackground(new Color(255, 255, 255));
 	        panel.setLayout(null);
 
 	        JLabel frageLabel = new JLabel("Frage:");
@@ -42,17 +45,9 @@ package de.vivienseligerlaraspadin.lernquiz.gui;
 	        kategorieLabel.setBounds(20, 80, 100, 20);
 	        panel.add(kategorieLabel);
 
-	        kategorieTextField = new JTextField();
-	        kategorieTextField.setBounds(130, 80, 200, 20);
-	        panel.add(kategorieTextField);
-
 	        JLabel schwierigkeitLabel = new JLabel("Schwierigkeit:");
 	        schwierigkeitLabel.setBounds(20, 110, 100, 20);
 	        panel.add(schwierigkeitLabel);
-
-	        schwierigkeitTextField = new JTextField();
-	        schwierigkeitTextField.setBounds(130, 110, 200, 20);
-	        panel.add(schwierigkeitTextField);
 
 	        JButton erstellenButton = new JButton("Erstellen");
 	        erstellenButton.setBounds(150, 150, 100, 30);
@@ -72,7 +67,15 @@ package de.vivienseligerlaraspadin.lernquiz.gui;
 	        });
 	        panel.add(erstellenButton);
 
-	        frame.add(panel);
+	        frame.getContentPane().add(panel);
+	        
+	        JComboBox comboBox = new JComboBox();
+	        comboBox.setBounds(130, 78, 200, 27);
+	        panel.add(comboBox);
+	        
+	        JComboBox comboBox_1 = new JComboBox();
+	        comboBox_1.setBounds(130, 108, 200, 27);
+	        panel.add(comboBox_1);
 	        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	        frame.setSize(400, 250);
 	        frame.setVisible(true);
