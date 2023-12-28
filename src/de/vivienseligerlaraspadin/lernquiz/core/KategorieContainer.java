@@ -30,4 +30,3 @@ public class KategorieContainer {
         return new ArrayList<>(kategorien);
     }
 }
-

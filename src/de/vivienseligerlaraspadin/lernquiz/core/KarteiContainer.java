@@ -2,9 +2,6 @@ package de.vivienseligerlaraspadin.lernquiz.core;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class KarteiContainer {
     private static KarteiContainer instance;
