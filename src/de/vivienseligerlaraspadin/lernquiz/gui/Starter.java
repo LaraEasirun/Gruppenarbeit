@@ -6,7 +6,7 @@ public class Starter {
 
 	
 	public static void main(String[] args) throws IOException{
-		Hauptmenue hauptmenue = new Hauptmenue();
+		new Hauptmenue();
 	}
 
 }
