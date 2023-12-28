@@ -1,49 +1,49 @@
 package de.vivienseligerlaraspadin.lernquiz.core;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class KartenManager {
-    private List<Karteikarte> kartenListe;
+    
 
     public KartenManager() {
-        kartenListe = new ArrayList<>();
+        
     }
 
-    public void erstelleKarteikarte(String frage, String antwort, String kategorie, int schwierigkeitsgrad) {
+    public void erstelleKarteikarte(String frage, String antwort, String kategorie, String schwierigkeitsgrad) {
         Karteikarte neueKarte = new Karteikarte(frage, antwort, kategorie, schwierigkeitsgrad);
-        kartenListe.add(neueKarte);
+        KarteiContainer.getInstance().getKarteikartenListe().add(neueKarte);
         System.out.println("Neue Karteikarte erstellt: " + neueKarte);
     }
 
-    public void bearbeiteKarteikarte(int index, String neueFrage, String neueAntwort, String neueKategorie, int neuerSchwierigkeitsgrad) {
+    public void bearbeiteKarteikarte(int index, String neueFrage, String neueAntwort, String neueKategorie, String neuerSchwierigkeitsgrad) {
+        List<Karteikarte> kartenListe = KarteiContainer.getInstance().getKarteikartenListe();
         if (index >= 0 && index < kartenListe.size()) {
             Karteikarte zuBearbeiten = kartenListe.get(index);
             zuBearbeiten.setFrage(neueFrage);
             zuBearbeiten.setAntwort(neueAntwort);
             zuBearbeiten.setKategorie(neueKategorie);
-            zuBearbeiten.setSchwierigkeitsgrad(neuerSchwierigkeitsgrad);
+            zuBearbeiten.setSchwierigkeit(neuerSchwierigkeitsgrad);
             System.out.println("Karteikarte aktualisiert: " + zuBearbeiten);
         } else {
-            System.out.println("Ungültiger Index");
+            System.out.println("Konnte nicht bearbeitet werden");
         }
     }
 
     public void loescheKarteikarte(int index) {
+        List<Karteikarte> kartenListe = KarteiContainer.getInstance().getKarteikartenListe();
         if (index >= 0 && index < kartenListe.size()) {
             kartenListe.remove(index);
-            System.out.println("Karteikarte gelöscht.");
+            System.out.println("Karteikarte geloescht.");
         } else {
-            System.out.println("Ungültiger Index");
+            System.out.println("Karteikarte konnte nicht geloescht werden");
         }
     }
 
-    // Weitere Methoden, wie zum Beispiel zum Verschieben von Karteikarten, können hier hinzugefügt werden.
-
-    // Methode zum Anzeigen aller Karteikarten
-    public void zeigeAlleKarteikarten() {
-        for (Karteikarte karte : kartenListe) {
-            System.out.println(karte);
-        }
+    public static List<Karteikarte> zeigeAlleKarteikarten() {
+        return KarteiContainer.getInstance().getKarteikartenListe();
     }
-}
+
+    
+    }
+

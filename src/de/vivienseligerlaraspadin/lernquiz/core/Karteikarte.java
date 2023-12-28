@@ -11,13 +11,13 @@ public class Karteikarte {
 	private String frage;
     private String antwort;
     private String kategorie;
-    private int schwierigkeitsgrad;
+    private String schwierigkeit;
 
-    public Karteikarte(String frage, String antwort, String kategorie, int schwierigkeitsgrad) {
+    public Karteikarte(String frage, String antwort, String kategorie, String schwierigkeit) {
         this.frage = frage;
         this.antwort = antwort;
         this.kategorie = kategorie;
-        this.schwierigkeitsgrad = schwierigkeitsgrad;
+        this.schwierigkeit = schwierigkeit;
     }
 
     public String getFrage() {
@@ -44,12 +44,12 @@ public class Karteikarte {
         this.kategorie = kategorie;
     }
 
-    public int getSchwierigkeitsgrad() {
-        return schwierigkeitsgrad;
+    public String getSchwierigkeit() {
+        return schwierigkeit;
     }
 
-    public void setSchwierigkeitsgrad(int schwierigkeitsgrad) {
-        this.schwierigkeitsgrad = schwierigkeitsgrad;
+    public void setSchwierigkeit(String schwierigkeit) {
+        this.schwierigkeit = schwierigkeit;
     }
 }
 
