@@ -1,13 +1,8 @@
 package de.vivienseligerlaraspadin.lernquiz.core;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.io.Serializable;
 
-
-public class Karteikarte {
+public class Karteikarte implements Serializable{
 	private String frage;
     private String antwort;
     private String kategorie;
