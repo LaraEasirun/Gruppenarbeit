@@ -11,7 +11,7 @@ import java.util.List;
 
 public class KarteiContainer {
     private static KarteiContainer instance;
-    private static List<Karteikarte> karteikartenListe;
+    private List<Karteikarte> karteikartenListe;
 
     private KarteiContainer() {
         karteikartenListe = new ArrayList<>();
@@ -43,7 +43,7 @@ public class KarteiContainer {
         }
     }
 
-    public static void speichern() {
+    public void speichern() {
     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("karteikarten.ser"))) {
         oos.writeObject(karteikartenListe);
     } catch (IOException e) {
@@ -51,7 +51,7 @@ public class KarteiContainer {
     }
 }
 
-public static void laden() {
+public void laden() {
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("karteikarten.ser"))) {
         karteikartenListe = (List<Karteikarte>) ois.readObject();
     } catch (IOException | ClassNotFoundException e) {

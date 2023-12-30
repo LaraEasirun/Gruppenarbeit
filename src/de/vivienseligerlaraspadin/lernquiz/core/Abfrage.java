@@ -7,10 +7,13 @@ package de.vivienseligerlaraspadin.lernquiz.core;
 	public class Abfrage {
 	    private List<Karteikarte> karteikarten;
 	    private List<String> benutzerantworten;
+		private KarteiContainer karteiContainer;
+		private static Abfrage instance;
 
 	    public Abfrage() {
 	        karteikarten = new ArrayList<>();
 	        benutzerantworten = new ArrayList<>();
+			this.karteiContainer = KarteiContainer.getInstance();
 	    }
 
 	    public void karteikarteHinzufuegen(Karteikarte karteikarte) {
@@ -18,12 +21,12 @@ package de.vivienseligerlaraspadin.lernquiz.core;
 	    }
 
 	    public Karteikarte zieheZufaelligeKarteikarte() {
-	        if (!karteikarten.isEmpty()) {
-	            Random random = new Random();
-	            int index = random.nextInt(karteikarten.size());
-	            return karteikarten.get(index);
-	        }
-	        return null;
+	        List<Karteikarte> karteikarten = karteiContainer.getKarteikartenListe();
+        	if (!karteikarten.isEmpty()) {
+            	int index = new Random().nextInt(karteikarten.size());
+           		return karteikarten.get(index);
+        }
+        	return null;
 	    }
 
 	    public void antwortHinzufuegen(String antwort) {
@@ -44,6 +47,21 @@ package de.vivienseligerlaraspadin.lernquiz.core;
 
 	        return korrekteAntworten;
 	    }
+
+
+		public List<Karteikarte> getKarteikarten() {
+			return new ArrayList<>(karteikarten); // Gibt eine Kopie der Liste zurück, um die Kapselung zu wahren
+		}
+		
+		public void setKarteikarten(List<Karteikarte> neueKarteikarten) {
+			this.karteikarten = new ArrayList<>(neueKarteikarten); // Erstellt eine Kopie der übergebenen Liste
+		}
+
+		public static Abfrage getInstance() {
+			if (instance == null) {
+				instance = new Abfrage();
+			}
+			return instance;
+		}
+		
 	}
-
-
