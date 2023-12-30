@@ -28,7 +28,7 @@ public class Hauptmenue implements ActionListener {
 
     Hauptmenue() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420, 420);
+        frame.setSize(420, 392);
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 336, 0, 0, 0};
         frame.getContentPane().setLayout(gridBagLayout);
