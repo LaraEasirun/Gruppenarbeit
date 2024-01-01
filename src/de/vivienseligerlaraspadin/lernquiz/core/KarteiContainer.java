@@ -32,24 +32,13 @@ public class KarteiContainer {
         return karteikartenListe;
     }
 
-    public void aktualisiereKarteikarte(Karteikarte alteKarte, Karteikarte neueKarte) {
-        for (int i = 0; i < karteikartenListe.size(); i++) {
-            Karteikarte vorhandeneKarte = karteikartenListe.get(i);
-            // Hier verwenden wir die Frage als eindeutiges Attribut zur Identifikation der Karteikarte
-            if (vorhandeneKarte.getFrage().equals(alteKarte.getFrage())) {
-                karteikartenListe.set(i, neueKarte);
-                break;
-            }
+    public void speichern() {
+         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("karteikarten.ser"))) {
+            oos.writeObject(karteikartenListe);
+        }   catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-    public void speichern() {
-    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("karteikarten.ser"))) {
-        oos.writeObject(karteikartenListe);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
 
 public void laden() {
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("karteikarten.ser"))) {

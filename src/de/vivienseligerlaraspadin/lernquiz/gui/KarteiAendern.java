@@ -10,7 +10,6 @@ import de.vivienseligerlaraspadin.lernquiz.core.KategorieContainer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class KarteiAendern {
 
     private JFrame frame;

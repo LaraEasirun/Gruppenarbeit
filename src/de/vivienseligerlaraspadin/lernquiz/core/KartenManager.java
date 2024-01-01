@@ -2,7 +2,9 @@ package de.vivienseligerlaraspadin.lernquiz.core;
 
 import java.util.List;
 
+import de.vivienseligerlaraspadin.lernquiz.core.*;
 import de.vivienseligerlaraspadin.lernquiz.gui.KarteiEinsehen;
+
 
 
 public class KartenManager {

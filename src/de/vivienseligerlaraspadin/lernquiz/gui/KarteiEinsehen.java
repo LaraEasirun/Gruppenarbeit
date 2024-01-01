@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import de.vivienseligerlaraspadin.lernquiz.core.*;
@@ -20,9 +19,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
 public class KarteiEinsehen implements ActionListener {
 
@@ -40,15 +36,16 @@ public KarteiEinsehen() {
 	frame = new JFrame("Karteikarten Einsehen");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	String[] columnNames = {"Frage", "Antwort", "Kategorie", "Schwierigkeit" };
+	String[] columnNames = {"ID", "Frage", "Antwort", "Kategorie", "Schwierigkeit" };
 	karteikartenListe = KartenManager.zeigeAlleKarteikarten(); // Angenommen, es gibt eine Klasse KartenManager
 	Object[][] data = new Object[karteikartenListe.size()][columnNames.length];
 	for (int i = 0; i < karteikartenListe.size(); i++) {
 		Karteikarte karte = karteikartenListe.get(i);
-		data[i][0] = karte.getFrage();
-		data[i][1] = karte.getAntwort();
-		data[i][2] = karte.getKategorie();
-		data[i][3] = karte.getSchwierigkeit();
+		data[i][0] = i;
+		data[i][1] = karte.getFrage();
+		data[i][2] = karte.getAntwort();
+		data[i][3] = karte.getKategorie();
+		data[i][4] = karte.getSchwierigkeit();
 	}
 	tableModel = new DefaultTableModel(data, columnNames);
 	GridBagLayout gridBagLayout = new GridBagLayout();
@@ -66,7 +63,7 @@ public KarteiEinsehen() {
 	gbc_topPanel_1.gridy = 0;
 	frame.getContentPane().add(topPanel_1, gbc_topPanel_1);
 
-	btnNeueKarteikarteErstellen = new JButton( "➕");
+	btnNeueKarteikarteErstellen = new JButton("Hinzufügen ➕");
 	GridBagConstraints gbc_btnNeueKarteikarteErstellen = new GridBagConstraints();
 	gbc_btnNeueKarteikarteErstellen.anchor = GridBagConstraints.WEST;
 	gbc_btnNeueKarteikarteErstellen.insets = new Insets(0, 0, 5, 5);
@@ -94,7 +91,7 @@ public KarteiEinsehen() {
 	gbc_btnKarteikartenLoeschen.gridy = 1;
 	frame.getContentPane().add(btnKarteikartenLoeschen, gbc_btnKarteikartenLoeschen);
 
-	btnKarteikartenBearbeiten = new JButton("✏️");
+	btnKarteikartenBearbeiten = new JButton("Ändern ✏️");
 	btnKarteikartenBearbeiten.addActionListener(this);
 	GridBagConstraints gbc_btnKarteikartenBearbeiten = new GridBagConstraints();
 	gbc_btnKarteikartenBearbeiten.insets = new Insets(0, 0, 5, 5);
@@ -102,7 +99,7 @@ public KarteiEinsehen() {
 	gbc_btnKarteikartenBearbeiten.gridy = 1;
 	frame.getContentPane().add(btnKarteikartenBearbeiten, gbc_btnKarteikartenBearbeiten);
 
-	btnHauptmenue = new JButton("Hauptmenü");
+	btnHauptmenue = new JButton(" Hauptmenü");
 	GridBagConstraints gbc_btnHauptmenue = new GridBagConstraints();
 	gbc_btnHauptmenue.insets = new Insets(0, 0, 5, 0);
 	gbc_btnHauptmenue.gridx = 5;

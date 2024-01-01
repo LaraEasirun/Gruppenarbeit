@@ -11,7 +11,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import de.vivienseligerlaraspadin.lernquiz.core.*;
+import de.vivienseligerlaraspadin.lernquiz.core.KartenManager;
+import de.vivienseligerlaraspadin.lernquiz.core.KategorieContainer;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
