@@ -103,7 +103,7 @@ public class Hauptmenue extends JFrame {
 		gbc_btnProgrammBeenden.gridy = 7;
 		contentPane.add(btnProgrammBeenden, gbc_btnProgrammBeenden);
 
-		JLabel lblNewLabel_1 = new JLabel("Test");
+		JLabel lblNewLabel_1 = new JLabel("Vivien Seliger, Lara Spadin v.1.0");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
