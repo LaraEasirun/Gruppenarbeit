@@ -21,10 +21,10 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
 		kategorieManager = new KategorieManager();
 		setTitle("Kategorien verwalten");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// Tabelle initialisieren
 		String[] columnNames = { "Kategorie" };
 		tableModel = new DefaultTableModel(columnNames, 0);
+		kategorienTabelle = new JTable(tableModel);
+
 		ladeKategorienInTabelle();
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 137, 0, 0, 0, 0, 0 };
@@ -69,7 +69,6 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
 		gbc_btnHauptmenue.gridy = 0;
 		getContentPane().add(btnHauptmenue, gbc_btnHauptmenue);
 		btnHauptmenue.addActionListener(this); // Added btnHauptmenue
-		kategorienTabelle = new JTable(tableModel);
 
 		JScrollPane scrollPane = new JScrollPane(kategorienTabelle);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
