@@ -10,6 +10,9 @@ import de.vivienseligerlaraspadin.lernquiz.core.KategorieContainer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Die Klasse "KarteiAendern" erstellt ein GUI-Fenster, mit dem Benutzer eine Karteikarte ändern können.
+ */
 public class KarteiAendern {
 
     private JFrame frame;
@@ -19,6 +22,11 @@ public class KarteiAendern {
     public JComboBox<String> schwierigkeitComboBox;
     private Karteikarte aktuelleKarteikarte;
 
+    /**
+     * Konstruktor für die Klasse "KarteiAendern". Erstellt das GUI-Fenster für die Änderung einer Karteikarte.
+     *
+     * @param karteikarte Die zu ändernde Karteikarte.
+     */
     public KarteiAendern(Karteikarte karteikarte) {
         aktuelleKarteikarte = karteikarte;
         frame = new JFrame("Karteikarte ändern");
@@ -83,7 +91,5 @@ public class KarteiAendern {
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
-        
     }
 }
