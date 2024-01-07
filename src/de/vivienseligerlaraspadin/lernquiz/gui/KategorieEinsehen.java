@@ -1,9 +1,8 @@
 package de.vivienseligerlaraspadin.lernquiz.gui;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import de.vivienseligerlaraspadin.lernquiz.core.KategorieManager;
+import de.vivienseligerlaraspadin.lernquiz.core.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +13,7 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
     private KategorieManager kategorieManager;
     private DefaultTableModel tableModel;
     private JTable kategorienTabelle;
-    private JButton btnKategorieHinzufügen, btnKategorieÄndern, btnKategorieLöschen, btnNeuLaden, btnHauptmenue; // Added btnHauptmenue
+    private JButton btnKategorieHinzufuegen, btnKategorieaendern, btnKategorieLoeschen, btnHauptmenue; 
 
     public KategorieEinsehen() {
         kategorieManager = new KategorieManager();
@@ -37,16 +36,14 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
 
         // Buttons hinzufügen
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        btnKategorieHinzufügen = new JButton("Hinzufügen ➕");
-        btnKategorieÄndern = new JButton("Ändern ✏️");
-        btnKategorieLöschen = new JButton("Löschen 🗑️");
-        btnNeuLaden = new JButton("Neu Laden");
-        btnHauptmenue = new JButton("Hauptmenü"); // Added btnHauptmenue
+        btnKategorieHinzufuegen = new JButton("Hinzufügen");
+        btnKategorieaendern = new JButton("Ändern️");
+        btnKategorieLoeschen = new JButton("Löschen️");
+        btnHauptmenue = new JButton("Hauptmenü"); 
 
-        buttonPanel.add(btnKategorieHinzufügen);
-        buttonPanel.add(btnKategorieÄndern);
-        buttonPanel.add(btnKategorieLöschen);
-        buttonPanel.add(btnNeuLaden);
+        buttonPanel.add(btnKategorieHinzufuegen);
+        buttonPanel.add(btnKategorieaendern);
+        buttonPanel.add(btnKategorieLoeschen);
         buttonPanel.add(btnHauptmenue); // Added btnHauptmenue
 
         gbc.gridy = 1;
@@ -54,11 +51,10 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
         add(buttonPanel, gbc);
 
         // ActionListener setzen
-        btnKategorieHinzufügen.addActionListener(this);
-        btnKategorieÄndern.addActionListener(this);
-        btnKategorieLöschen.addActionListener(this);
-        btnNeuLaden.addActionListener(this);
-        btnHauptmenue.addActionListener(this); // Added btnHauptmenue
+        btnKategorieHinzufuegen.addActionListener(this);
+        btnKategorieaendern.addActionListener(this);
+        btnKategorieLoeschen.addActionListener(this);
+        btnHauptmenue.addActionListener(this); 
 
         pack();
         setLocationRelativeTo(null);
@@ -76,7 +72,7 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btnKategorieHinzufügen) {
+        if (e.getSource() == btnKategorieHinzufuegen) {
             String neueKategorie = JOptionPane.showInputDialog(this, "Neue Kategorie:");
             if (neueKategorie != null && !neueKategorie.trim().isEmpty()) {
                 kategorieManager.kategorieHinzufuegen(neueKategorie);
@@ -84,7 +80,7 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
                 this.revalidate();
                 this.repaint();
             }
-        } else if (e.getSource() == btnKategorieÄndern) {
+        } else if (e.getSource() == btnKategorieaendern) {
             int selectedRow = kategorienTabelle.getSelectedRow();
             if (selectedRow >= 0) {
                 String aktuelleKategorie = (String) kategorienTabelle.getValueAt(selectedRow, 0);
@@ -96,7 +92,7 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Kategorie aus, um sie zu ändern.", "Keine Auswahl", JOptionPane.WARNING_MESSAGE);
             }
-        } else if (e.getSource() == btnKategorieLöschen) {
+        } else if (e.getSource() == btnKategorieLoeschen) {
             int selectedRow = kategorienTabelle.getSelectedRow();
             if (selectedRow >= 0) {
                 String kategorie = (String) kategorienTabelle.getValueAt(selectedRow, 0);
@@ -108,9 +104,7 @@ public class KategorieEinsehen extends JFrame implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Kategorie aus, um sie zu löschen.", "Keine Auswahl", JOptionPane.WARNING_MESSAGE);
             }
-        } else if (e.getSource() == btnNeuLaden) {
-            ladeKategorienInTabelle();
-        } else if (e.getSource() == btnHauptmenue) { // Added btnHauptmenue
+        } else if (e.getSource() == btnHauptmenue) { 
             this.dispose();
 		    new Hauptmenue();
         }

@@ -35,9 +35,9 @@ public class Auswertung {
 		int gesamtKarten = karteikarten.size();
 		double prozent = (double) beherrschteKarten / gesamtKarten * 100;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 0, 0, 89, 169, 142, 0 };
+		gridBagLayout.columnWidths = new int[] { 0, 0, 109, 169, 142, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 60, 0, 29, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE, 0.0 };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
@@ -51,21 +51,21 @@ public class Auswertung {
 			}
 		});
 
-		// Erstelle ein JLabel mit der Nachricht
+	
 		JLabel label = new JLabel(
 				String.format("Du beherrschst bereits %d von %d Karteikarten.\nDas entspricht %.2f%%!",
 						beherrschteKarten, gesamtKarten, prozent),
 				SwingConstants.CENTER);
 
-		// Füge das JLabel zum JFrame hinzu
+	
 		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.gridwidth = 7;
-		gbc_label.insets = new Insets(0, 0, 5, 0);
-		gbc_label.gridx = 0;
+		gbc_label.gridwidth = 5;
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 1;
 		gbc_label.gridy = 1;
 		frame.getContentPane().add(label, gbc_label);
 
-		// Füge den "OK" Button zum JFrame hinzu
+		
 		GridBagConstraints gbc_okButton = new GridBagConstraints();
 		gbc_okButton.insets = new Insets(0, 0, 5, 5);
 		gbc_okButton.anchor = GridBagConstraints.NORTH;
@@ -77,7 +77,7 @@ public class Auswertung {
 		// Positioniere das Fenster in der Mitte des Bildschirms
 		frame.setLocationRelativeTo(null);
 
-		// Zeige das JFrame an
+		
 		frame.setVisible(true);
 	}
 }
