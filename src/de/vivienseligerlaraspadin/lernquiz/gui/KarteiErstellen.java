@@ -115,7 +115,7 @@ public class KarteiErstellen {
 
 				// Karteikarte in der Liste in der Klasse KarteiContainer.java speichern
 				KartenManager kartenManager = new KartenManager();
-				kartenManager.erstelleKarteikarte(frage, antwort, kategorie, schwierigkeit);
+				kartenManager.erstelleKarteikarte(frage, antwort, kategorie, schwierigkeit, false);
 
 				frame.dispose();
 				JOptionPane.showMessageDialog(null, "Karteikarte wurde erfolgreich erstellt!", "Erfolg",

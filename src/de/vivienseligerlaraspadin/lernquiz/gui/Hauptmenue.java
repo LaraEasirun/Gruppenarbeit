@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 
 public class Hauptmenue extends JFrame {
 
-	private static final long serialVersionUID = 1L;
+     //private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	public Hauptmenue() {
@@ -89,6 +89,25 @@ public class Hauptmenue extends JFrame {
 		gbc_btnKategorien.gridy = 5;
 		contentPane.add(btnKategorien, gbc_btnKategorien);
 
+
+
+        JButton btnAuswertung = new JButton("Auswertung");
+        btnAuswertung.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new Auswertung();
+            }
+        });
+        GridBagConstraints gbc_btnAuswertung = new GridBagConstraints();
+        gbc_btnAuswertung.anchor = GridBagConstraints.NORTH;
+        gbc_btnAuswertung.fill = GridBagConstraints.HORIZONTAL;
+        gbc_btnAuswertung.insets = new Insets(0, 50, 5, 50);
+        gbc_btnAuswertung.gridx = 1;
+        gbc_btnAuswertung.gridy = 6;
+        contentPane.add(btnAuswertung, gbc_btnAuswertung);
+
+
+
 		JButton btnProgrammBeenden = new JButton("Programm beenden");
 		btnProgrammBeenden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -100,10 +119,10 @@ public class Hauptmenue extends JFrame {
 		gbc_btnProgrammBeenden.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnProgrammBeenden.insets = new Insets(0, 50, 5, 50);
 		gbc_btnProgrammBeenden.gridx = 1;
-		gbc_btnProgrammBeenden.gridy = 7;
+		gbc_btnProgrammBeenden.gridy = 8;
 		contentPane.add(btnProgrammBeenden, gbc_btnProgrammBeenden);
 
-		JLabel lblNewLabel_1 = new JLabel("Vivien Seliger, Lara Spadin v.1.0");
+		JLabel lblNewLabel_1 = new JLabel("© Vivien Seliger, Lara Spadin - v1.0");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
@@ -111,6 +130,8 @@ public class Hauptmenue extends JFrame {
 		gbc_lblNewLabel_1.gridy = 9;
 		contentPane.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
+        this.setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }
+

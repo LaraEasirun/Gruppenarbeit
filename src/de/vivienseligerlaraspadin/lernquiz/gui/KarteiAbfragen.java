@@ -3,7 +3,9 @@ package de.vivienseligerlaraspadin.lernquiz.gui;
 import javax.swing.*;
 
 import de.vivienseligerlaraspadin.lernquiz.core.Abfrage;
+import de.vivienseligerlaraspadin.lernquiz.core.KarteiContainer;
 import de.vivienseligerlaraspadin.lernquiz.core.Karteikarte;
+import de.vivienseligerlaraspadin.lernquiz.core.KartenManager;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,10 +17,13 @@ public class KarteiAbfragen extends JFrame {
 	private JButton antwortButton;
 	private JButton naechsteButton;
 	private JButton hauptmenueButton; 
+	private JButton kannIchButton;
+	private JButton kannIchNichtButton;
 	public Abfrage abfrage;
 
 	public KarteiAbfragen() {
-		abfrage = new Abfrage();
+		//abfrage = new Abfrage();
+		abfrage = Abfrage.getInstance();
 		setTitle("Kartei Lernen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(332, 311);
@@ -36,6 +41,48 @@ public class KarteiAbfragen extends JFrame {
 		});
 
 		Abfrage.getInstance().zieheZufaelligeKarteikarte();
+
+		kannIchButton = new JButton("Kann ich");
+		kannIchButton.addActionListener(new ActionListener() {
+    	@Override
+    	public void actionPerformed(ActionEvent e) {
+        	Karteikarte aktuelleKarte = Abfrage.getInstance().getAktuelleKarteikarte();
+        		if (aktuelleKarte != null) {
+            		KartenManager.bearbeiteKarteikarte(
+                	KarteiContainer.getInstance().getKarteikartenListe().indexOf(aktuelleKarte),
+                	aktuelleKarte.getFrage(),
+                	aktuelleKarte.getAntwort(),
+                	aktuelleKarte.getKategorie(),
+                	aktuelleKarte.getSchwierigkeitsgrad(),
+                	true
+            );
+            // Ziehen Sie die nächste Karteikarte
+            Karteikarte naechsteKarte = Abfrage.getInstance().zieheZufaelligeKarteikarte();
+            // Aktualisieren Sie die Anzeige mit der nächsten Karteikarte
+        }
+    }
+});
+
+		kannIchNichtButton = new JButton("Kann ich nicht");
+		kannIchNichtButton.addActionListener(new ActionListener() {
+    		@Override
+    		public void actionPerformed(ActionEvent e) {
+        	Karteikarte aktuelleKarte = Abfrage.getInstance().getAktuelleKarteikarte();
+        	if (aktuelleKarte != null) {
+            	KartenManager.bearbeiteKarteikarte(
+                	KarteiContainer.getInstance().getKarteikartenListe().indexOf(aktuelleKarte),
+                	aktuelleKarte.getFrage(),
+                	aktuelleKarte.getAntwort(),
+                	aktuelleKarte.getKategorie(),
+                	aktuelleKarte.getSchwierigkeitsgrad(),
+                	false
+            	);
+            // Ziehen Sie die nächste Karteikarte
+            Karteikarte naechsteKarte = Abfrage.getInstance().zieheZufaelligeKarteikarte();
+            // Aktualisieren Sie die Anzeige mit der nächsten Karteikarte
+        }
+    }
+});
 
 		naechsteButton = new JButton("Nächste");
 		naechsteButton.addActionListener(new ActionListener() {
@@ -67,9 +114,15 @@ public class KarteiAbfragen extends JFrame {
 
 		JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		bottomPanel.add(naechsteButton);
+		bottomPanel.add(kannIchButton);
+		bottomPanel.add(kannIchNichtButton);
 
 		getContentPane().add(topPanel, BorderLayout.NORTH);
 		getContentPane().add(middlePanel, BorderLayout.CENTER);
+
+		getContentPane().add(topPanel, BorderLayout.NORTH);
+		getContentPane().add(middlePanel, BorderLayout.CENTER);
+		getContentPane().add(bottomPanel, BorderLayout.SOUTH);
 
 		frageLabel = new JLabel("Frage: ");
 		GridBagConstraints gbc_frageLabel = new GridBagConstraints();
